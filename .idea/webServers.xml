@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="3826d2a0-f3b0-4b2f-af5e-465a7b33a64a" name="cloud.arras" url="http://login4064@serveur1.arras-sio.com">
+        <fileTransfer host="login4064@serveur1.arras-sio.com" port="4064" rootFolder="/var/www/html" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="4064" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
