@@ -44,9 +44,14 @@ class Utilisateur
 
     /**
      * @ORM\ManyToOne(targetEntity=Role::class)
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $idRole;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $dateinscription;
 
     public function getId(): ?int
     {
@@ -121,6 +126,18 @@ class Utilisateur
     public function setIdRole(?Role $idRole): self
     {
         $this->idRole = $idRole;
+
+        return $this;
+    }
+
+    public function getDateinscription(): ?\DateTimeInterface
+    {
+        return $this->dateinscription;
+    }
+
+    public function setDateinscription(\DateTimeInterface $dateinscription): self
+    {
+        $this->dateinscription = $dateinscription;
 
         return $this;
     }

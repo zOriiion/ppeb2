@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20201126142600 extends AbstractMigration
+final class Version20201128181441 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -20,9 +20,9 @@ final class Version20201126142600 extends AbstractMigration
     public function up(Schema $schema) : void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE liste_mot ADD id_theme_id INT NOT NULL, DROP id_theme');
         $this->addSql('ALTER TABLE liste_mot ADD CONSTRAINT FK_E97725189D99812 FOREIGN KEY (id_theme_id) REFERENCES theme (id)');
         $this->addSql('CREATE INDEX IDX_E97725189D99812 ON liste_mot (id_theme_id)');
+        $this->addSql('ALTER TABLE utilisateur CHANGE id_role_id id_role_id INT DEFAULT NULL');
     }
 
     public function down(Schema $schema) : void
@@ -30,6 +30,6 @@ final class Version20201126142600 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->addSql('ALTER TABLE liste_mot DROP FOREIGN KEY FK_E97725189D99812');
         $this->addSql('DROP INDEX IDX_E97725189D99812 ON liste_mot');
-        $this->addSql('ALTER TABLE liste_mot ADD id_theme VARCHAR(255) CHARACTER SET utf8mb4 NOT NULL COLLATE `utf8mb4_unicode_ci`, DROP id_theme_id');
+        $this->addSql('ALTER TABLE utilisateur CHANGE id_role_id id_role_id INT NOT NULL');
     }
 }

@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent()}}Liste Utilisateurs{% endblock %}
+
+{% block body %}
+{{parent()}}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <h1 class="text-center text-primary p-4">Liste des Utilisateurs</h1>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-8 p-4 m-0 text-primary">
+            <div class="table-responsive">
+<table class="table table-hover">
+ <thead>
+ <tr>
+  <th scope="col">Id</th>
+  <th scope="col">Nom</th>
+  <th scope="col">Prénom</th>
+  <th scope="col">Date de naissance</th>
+  <th scope="col">Date d'inscription</th>
+   <th></th>
+ <th></th>
+ </tr>
+ </thead>
+ <tbody>
+        {% for utilisateur in utilisateurs %}
+        <tr class="{{ cycle(['table-primary', 'table-secondary'], loop.index0) }}">
+        <td>{{utilisateur.id |capitalize }}</td>
+        <td>{{utilisateur.nom |capitalize }}</td>
+        <td>{{utilisateur.prenom |capitalize }}</td>
+        <td>{{utilisateur.dateinscription | date("d/m/Y")}}</td>
+        <td><a href="{{path('modif_utilisateur',{'id': utilisateur.id})}}" class="text-white"><span class="material-icons" title="Modifier un Utilisateur">create</span></a></td>
+         <td><a href="{{path('liste_utilisateurs',{'supp':utilisateur.id})}}" class="text-white"><span
+class="material-icons" title="Supprimer l'utilisateur">
+delete
+ </span></a></td>
+
+
+        </tr>
+        {% endfor %}
+ </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 
