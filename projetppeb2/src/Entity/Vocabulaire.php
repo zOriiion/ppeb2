@@ -39,14 +39,9 @@ class Vocabulaire
 
     /**
      * @ORM\ManyToOne(targetEntity=Categorie::class)
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $idCategorie;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Categorie::class)
-     * @ORM\JoinColumn(nullable=false)
-     */
     
 
     public function getId(): ?int

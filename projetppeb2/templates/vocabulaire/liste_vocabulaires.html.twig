@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent()}}Liste vocabulaires{% endblock %}
+
+{% block body %}
+{{parent()}}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <h1 class="text-center text-primary p-4">Liste du vocabulaire</h1>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-8 p-4 m-0 text-primary">
+            <div class="table-responsive">
+<table class="table table-hover">
+ <thead>
+ <tr>
+  <th scope="col">Mot de vocabulaire</th>
+  <th scope="col">Traduction</th>
+  <th scope="col">Fausse traduction n°1</th>
+  <th scope="col">Fausse traduction n°2</th>
+  <th scope="col">Catégorie</th>
+  <th></th>
+ <th></th>
+ </tr>
+ </thead>
+ <tbody>
+        {% for vocabulaire in vocabulaires %}
+        <tr class="{{ cycle(['table-primary', 'table-secondary'], loop.index0) }}">
+        <td>{{vocabulaire.libelleNonTraduit |capitalize }}</td>
+        <td>{{vocabulaire.libelle |capitalize }}</td>
+        <td>{{vocabulaire.libelleFaux1 |capitalize }}</td>
+        <td>{{vocabulaire.libelleFaux2 |capitalize }}</td>
+        <td>{{vocabulaire.idCategorie |capitalize }}</td>
+        <td><a href="{{path('modif_vocabulaire',{'id':
+vocabulaire.id})}}" class="text-white"><span class="material-icons" title="Modifier un
+mot de vocabulaire">create</span></a></td>
+ <td><a href="{{path('liste_vocabulaires',{'supp':vocabulaire.id})}}" class="text-white"><span
+class="material-icons" title="Supprimer ce vocabulaire">
+delete
+ </span></a></td>
+
+
+        </tr>
+        {% endfor %}
+ </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 
