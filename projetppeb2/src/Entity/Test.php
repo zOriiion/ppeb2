@@ -31,7 +31,7 @@ class Test
 
     /**
      * @ORM\ManyToOne(targetEntity=Niveau::class)
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $idNiveau;
 
