@@ -52,6 +52,7 @@ class Utilisateur
      * @ORM\Column(type="date")
      */
     private $dateinscription;
+    
 
     public function getId(): ?int
     {

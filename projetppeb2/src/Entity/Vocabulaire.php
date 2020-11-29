@@ -43,6 +43,10 @@ class Vocabulaire
      */
     private $idCategorie;
     
+    public function __construct()
+    {
+        $this->vocabulaires = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {

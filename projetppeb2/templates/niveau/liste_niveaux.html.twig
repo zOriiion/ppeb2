@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent()}}Liste niveaux{% endblock %}
+
+{% block body %}
+{{parent()}}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <h1 class="text-center text-primary p-4">Liste des niveaux</h1>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-8 p-4 m-0 text-primary">
+            <div class="table-responsive">
+<table class="table table-hover">
+ <thead>
+ <tr>
+  <th scope="col">Libellé</th>
+  <th></th>
+ <th></th>
+ </tr>
+ </thead>
+ <tbody>
+        {% for niveau in niveaux %}
+        <tr class="{{ cycle(['table-primary', 'table-secondary'], loop.index0) }}">
+        <td>{{niveau.libelle |capitalize }}</td>
+        <td><a href="{{path('modif_niveau',{'id':
+niveau.id})}}" class="text-white"><span class="material-icons" title="Modifier un
+niveau">create</span></a></td>
+ <td><a href="{{path('liste_niveaux',{'supp':niveau.id})}}" class="text-white"><span
+class="material-icons" title="Supprimer le niveau">
+delete
+ </span></a></td>
+
+
+        </tr>
+        {% endfor %}
+ </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 
