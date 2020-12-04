@@ -20,6 +20,7 @@ class ModifUtilisateurType extends AbstractType
             ->add('nom', TextType::class)
             ->add('email', TextType::class)
             ->add('motdepasse', PasswordType::class)
+            ->add('role')
             ->add('modifier', SubmitType::class)
         ;
     }

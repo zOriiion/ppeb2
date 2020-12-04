@@ -3,11 +3,13 @@
 namespace App\Form;
 
 use App\Entity\Vocabulaire;
+use App\Entity\Categorie;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class AjoutVocabulaireType extends AbstractType
 {
@@ -20,6 +22,10 @@ class AjoutVocabulaireType extends AbstractType
             ->add('libelleFaux1', TextType::class)
             ->add('libelleFaux2', TextType::class)
             ->add('idCategorie')
+            ->add('idCategorie', EntityType::class,
+            array( 'class' => 'App\Entity\Categorie',
+            'choice_label' => 'libelle'))
+
             ->add('ajouter', SubmitType::class)
         ;
     }

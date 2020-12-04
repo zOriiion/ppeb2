@@ -44,7 +44,7 @@ class Utilisateur
 
     /**
      * @ORM\ManyToOne(targetEntity=Role::class)
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\JoinColumn(nullable=false)
      */
     private $idRole;
 

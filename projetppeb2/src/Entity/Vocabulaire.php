@@ -42,11 +42,7 @@ class Vocabulaire
      * @ORM\JoinColumn(nullable=true)
      */
     private $idCategorie;
-    
-    public function __construct()
-    {
-        $this->vocabulaires = new ArrayCollection();
-    }
+
 
     public function getId(): ?int
     {

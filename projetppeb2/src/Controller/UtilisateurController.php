@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Utilisateur;
+use App\Entity\Role;
 use App\Form\AjoutUtilisateurType;
 
 class UtilisateurController extends AbstractController
@@ -26,6 +27,7 @@ class UtilisateurController extends AbstractController
     */
     public function ajoutUtilisateur(Request $request)
     {
+        //$role = unRole();
         $utilisateur = new Utilisateur(); // Instanciation d’un objet Utilisateur
         $form = $this->createForm(AjoutUtilisateurType::class,$utilisateur); 
         // Création du formulaire pour ajouter un utilisateur, en lui donnant l’instance.
