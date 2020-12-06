@@ -21,11 +21,9 @@ class AjoutVocabulaireType extends AbstractType
             ->add('libelle', TextType::class)
             ->add('libelleFaux1', TextType::class)
             ->add('libelleFaux2', TextType::class)
-            ->add('idCategorie')
             ->add('idCategorie', EntityType::class,
             array( 'class' => 'App\Entity\Categorie',
             'choice_label' => 'libelle'))
-
             ->add('ajouter', SubmitType::class)
         ;
     }
