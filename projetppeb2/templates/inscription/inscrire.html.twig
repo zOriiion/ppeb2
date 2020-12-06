@@ -1,15 +1,38 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{parent()}}Inscription{% endblock %}
-{% block body %}
-{{parent()}}
-<div class="container-fluid">
+{% block title %}{{ parent()}} - Inscription {% endblock %}
+{% block content %}
+
+ <div class="container-fluid">
  <div class="row justify-content-center">
- <h1 class="text-center text-primary p-4">S'inscrire</h1>
+ <h1 class="text-center text-primary p-4"> S'inscrire</h1>
  </div>
  <div class="row justify-content-center">
- <div class="col-8 bg-white p-4 m-0 text-primary">
- {{form(form)}}
+ <div class="col-12 bg-white p-4 m-0 text-primary">
+ {{ form_start(form) }}
+<div class="form-group">
+ {{ form_label(form.username, 'Votre username (*) ', {'label_attr': {'class': 'font-weightbold'}}) }}
+ {{ form_widget(form.username, {'attr': {'class': 'form-control'}}) }}
+ </div>
+ <div class="form-group">
+ {{ form_label(form.password, 'Votre mot de passe (*) ', {'label_attr':
+{'class': 'font-weight-bold'}}) }}
+ {{ form_widget(form.password, {'attr': {'class': 'form-control'}}) }}
+ </div>
+ <div class="form-group">
+ {{ form_label(form.confirmation, 'Confirmation de votre mot de passe (*)', {'label_attr': {'class': 'font-weight-bold'}})
+}}
+ {{ form_widget(form.confirmation, {'attr': {'class': 'form-control'}}) }}
+ </div>
+  <div class="form-group">
+ {{ form_label(form.utilisateur, 'Utilisateur (*)', {'label_attr': {'class': 'font-weight-bold'}})
+}}
+ {{ form_widget(form.utilisateur, {'attr': {'class': 'form-control'}}) }}
+ </div>
+ <div class="form-group mx-auto text-center">
+ {{ form_widget(form.inscrire, { 'label': "S'inscrire", 'attr': {'class': 'btn font-weightbold bg-primary text-white mx-auto text-center'}}) }}
+ </div>
+ {{ form_end(form) }}
  </div>
  </div>
 </div>

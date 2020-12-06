@@ -1,8 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Connexion{% endblock %}
 
 {% block body %}
+
+<div style="padding-left:20%; padding-top:5%; padding-right:20%">
 <form method="post">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -13,11 +15,12 @@
             You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
         </div>
     {% endif %}
-
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputUsername">Username</label>
+<div style="padding-left:40%; padding-bottom:2%; padding-right:40%">
+    <h1 class="h3 mb-3 font-weight-normal">Connectez-vous</h1>
+    </div>
+    <label for="inputUsername">Pseudo</label>
     <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" required autofocus>
-    <label for="inputPassword">Password</label>
+    <label for="inputPassword">Mot de passe</label>
     <input type="password" name="password" id="inputPassword" class="form-control" required>
 
     <input type="hidden" name="_csrf_token"
@@ -34,9 +37,11 @@
             </label>
         </div>
     #}
-
+<div style="padding-left:40%; padding-top:2%; padding-right:40%">
     <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
+        Se connecter
     </button>
+    </div>
 </form>
+</div>
 {% endblock %}

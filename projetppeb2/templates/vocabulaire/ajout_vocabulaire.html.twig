@@ -1,15 +1,43 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{parent()}}Ajout Vocab{% endblock %}
-{% block body %}
-{{parent()}}
-<div class="container-fluid">
+{% block title %}{{ parent()}} - Ajout vocab{% endblock %}
+{% block content %}
+
+ <div class="container-fluid">
  <div class="row justify-content-center">
- <h1 class="text-center text-primary p-4">Ajouter du vocabulaire</h1>
+ <h1 class="text-center text-primary p-4"> Ajouter du vocabulaire</h1>
  </div>
  <div class="row justify-content-center">
- <div class="col-8 bg-white p-4 m-0 text-primary">
- {{form(form)}}
+ <div class="col-12 bg-white p-4 m-0 text-primary">
+ {{ form_start(form) }}
+<div class="form-group">
+ {{ form_label(form.libelleNonTraduit, 'Mot de vocabulaire (*) ', {'label_attr': {'class': 'font-weightbold'}}) }}
+ {{ form_widget(form.libelleNonTraduit, {'attr': {'class': 'form-control'}}) }}
+ </div>
+ <div class="form-group">
+ {{ form_label(form.libelle, 'Traduction (*) ', {'label_attr':
+{'class': 'font-weight-bold'}}) }}
+ {{ form_widget(form.libelle, {'attr': {'class': 'form-control'}}) }}
+ </div>
+ <div class="form-group">
+ {{ form_label(form.libelleFaux1, 'Fausse traduction n°1 (*)', {'label_attr': {'class': 'font-weight-bold'}})
+}}
+ {{ form_widget(form.libelleFaux1, {'attr': {'class': 'form-control'}}) }}
+ </div>
+  <div class="form-group">
+ {{ form_label(form.libelleFaux2, 'Fausse traduction n°2 (*)', {'label_attr': {'class': 'font-weight-bold'}})
+}}
+ {{ form_widget(form.libelleFaux2, {'attr': {'class': 'form-control'}}) }}
+ </div>
+  <div class="form-group">
+ {{ form_label(form.idCategorie, 'Catégorie du vocabulaire (*)', {'label_attr': {'class': 'font-weight-bold'}})
+}}
+ {{ form_widget(form.idCategorie, {'attr': {'class': 'form-control'}}) }}
+ </div>
+ <div class="form-group mx-auto text-center">
+ {{ form_widget(form.ajouter, { 'label': "Ajouter", 'attr': {'class': 'btn font-weightbold bg-primary text-white mx-auto text-center'}}) }}
+ </div>
+ {{ form_end(form) }}
  </div>
  </div>
 </div>
