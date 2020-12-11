@@ -4,9 +4,11 @@ namespace App\Entity;
 
 use App\Repository\ThemeRepository;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * @ORM\Entity(repositoryClass=ThemeRepository::class)
+ * @ApiResource()
  */
 class Theme
 {
