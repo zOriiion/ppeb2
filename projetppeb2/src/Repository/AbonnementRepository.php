@@ -5,7 +5,7 @@ namespace App\Repository;
 use App\Entity\Abonnement;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
-
+use ApiPlatform\Core\Annotation\ApiResource;
 /**
  * @method Abonnement|null find($id, $lockMode = null, $lockVersion = null)
  * @method Abonnement|null findOneBy(array $criteria, array $orderBy = null)
