@@ -72,6 +72,33 @@ class TestController extends AbstractController
         'tests'=>$tests 
         ]);
     }
+
+
+     /**
+    * @Route("/faire_test", name="faire_test")
+    */
+    public function faireTest(Request $request)
+    {
+        $test = new Test();
+        $form = $this->createForm(AjoutTestType::class,$test); 
+        // Création du formulaire pour ajouter un thème, en lui donnant l’instance.
+        if ($request->isMethod('POST')) {
+            $form->handleRequest($request);
+            if ($form->isSubmitted() && $form->isValid()) {
+                $em = $this->getDoctrine()->getManager(); 
+                // On récupère le gestionnaire des entités
+                $em->persist($test); // Nous enregistrons notre nouveau test
+                $em->flush(); // Nous validons notre ajout
+                 $this->addFlash('notice', 'Test inséré'); 
+                // Nous préparons le message à afficher à l’utilisateur sur la page où il se rendra
+                }
+            return $this->redirectToRoute('ajout_test'); 
+            // Nous redirigeons l’utilisateur sur l’ajout d’un test après l’insertion.
+            }
+            return $this->render('test/faire_test.html.twig', [
+            'form'=>$form->createView() // Nous passons le formulaire à la vue
+        ]);
+    }
                
 
 

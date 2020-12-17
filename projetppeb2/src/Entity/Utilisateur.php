@@ -54,6 +54,11 @@ class Utilisateur
      * @ORM\Column(type="date")
      */
     private $dateinscription;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $photo;
     
 
     public function getId(): ?int
@@ -141,6 +146,18 @@ class Utilisateur
     public function setDateinscription(\DateTimeInterface $dateinscription): self
     {
         $this->dateinscription = $dateinscription;
+
+        return $this;
+    }
+
+    public function getPhoto(): ?string
+    {
+        return $this->photo;
+    }
+
+    public function setPhoto(string $photo): self
+    {
+        $this->photo = $photo;
 
         return $this;
     }
