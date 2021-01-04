@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent()}}Statistique des catégories{% endblock %}
+{% block body %}
+{{parent()}}
+<div class="container-fuid">
+<div class="row justify-content-center">
+<h1 class="text-center text-primary p-4"> Statistiques des catégories par vocabulaire</h1>
+</div>
+<div class="row justify-content-center">
+<div class="col-8 p-4 m-0 text-primary">
+<div class="table-responsive">
+<table class="table-hover">
+    <thead>
+    <tr>
+        <th scope="col">Libelle de la catégorie</th>
+        <th scope="col">Nb de vocab ayant cette catégorie</th>
+    <tr>
+    </thead>
+    <tbody>
+    {% for categorie in categories %}
+        <tr class="{{ cycle(['table-primary', 'table-secondary'], loop.index0) }}">
+        <td>{{categorie.libelle |capitalize }}</td>
+        <td>{{categorie.NbVocabParCateg |capitalize }}</td>
+        
+        </tr>
+        {% endfor %}
+ </tbody>
+            </table>
+</div></div></div></div>
+{% endblock %}
