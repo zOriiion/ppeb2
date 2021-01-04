@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ResultatController!{% endblock %}
+
+{% block contenu %}
+
+
+    <button type="button" id="btTestajax">Test Ajax</button>
+    <span id="nb">0</span>
+    <br />Rafraichissement
+    <span id="rafraiche">0</span>
+    <ul></ul>
+
+    <button type="button" class="btn btn-secondary">Secondary</button>
+
+    <script type="text/javascript" src="{{ asset('js/jquery-3.4.1.min.js') }}"></script> 
+    <script type="text/javascript" src="{{ asset('js/groupby.js') }}"></script>
+{% endblock %}

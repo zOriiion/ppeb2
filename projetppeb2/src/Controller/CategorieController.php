@@ -72,6 +72,38 @@ class CategorieController extends AbstractController
         'categories'=>$categories
         ]);
     }
+
+    /**
+     * @Route("/stats-categories", name="stats-categories")
+     */
+    public function statscategories(Request $request)
+    {
+        // LA BASE
+
+        $em = $this->getDoctrine();
+        $repoEnt = $em->getRepository(Categorie::class);
+
+        // ON ETABLI LA CONNEXION
+
+        $conn = $this->getDoctrine()->getManager()->getConnection();
+
+        // POUR LA LISTE AVEC ID, LIBELLE, etc
+
+        $sqlListeEnt = '
+            SELECT e.libelle, COUNT(*) as NbParEnt FROM vocabulaire v, categorie c WHERE v.categorie_id=c.id GROUP BY v.categorie_id
+            ';
+        $liste = $conn->prepare($sqlListeEnt);
+        $liste->execute(array());
+
+
+
+        // POUR LE RENDER
+        // Nous passons la liste des entreprises + le count à la vue
+
+        return $this->render('categorie/stats-categories.html.twig', [
+            'categories' => $liste, //ICI C'EST AVEC L'ID ET LE LIBELLE
+        ]);
+    }
                
 
 

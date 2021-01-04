@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Vocabulaire;
 use App\Form\AjoutVocabulaireType;
+use App\Repository\VocabulaireRepository;
 
 class VocabulaireController extends AbstractController
 {
@@ -72,5 +73,16 @@ class VocabulaireController extends AbstractController
         'vocabulaires'=>$vocabulaires // Nous passons la liste du vocabs à la vue
         ]);
     }
+
+    /** 
+     * @Route("/nbVocabCateg", name="nbVocabCateg") 
+     */ 
+    public function nbVocabCateg (Request $request, VocabulaireRepository $repository) 
+    { 
+        $fichiers = $repository->findAllFilesByUser(1); 
+        return $this->json($fichiers); 
+        
+    }
+
 
 }
