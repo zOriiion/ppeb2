@@ -10,9 +10,12 @@ $(document).ready(function() {
     var affichage = document.getElementById("affichage");
     var titre = document.getElementById("titre");
 
-
+    inputExo.style.visibility="hidden"
+    btExoForm.style.visibility="hidden"
+    affichage.style.visibility="hidden"
 
     btExo.addEventListener("click",e=>{
+        titre.style.visibility="hidden"
         themes.style.visibility="hidden"
         inputExo.style.visibility="visible"
         btExoForm.style.visibility="visible"
