@@ -104,9 +104,14 @@
         </div>
       </li>
 
-      <li class="nav-item">
-        <a class="nav-link" href="{{path('stats-categories')}}">Statistiques</a>
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Statistique</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="{{path('stats-categories')}}">Statistique Catégorie</a>
+          <a class="dropdown-item" href="{{path('stats-niveaux')}}">Statistique Niveau</a>
+        </div>
       </li>
+
       
     </ul>
     <form class="form-inline my-2 my-lg-0">

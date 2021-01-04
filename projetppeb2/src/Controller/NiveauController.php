@@ -72,6 +72,32 @@ class NiveauController extends AbstractController
         'niveaux'=>$niveaux // Nous passons la liste des niveaux à la vue
         ]);
     }
+
+    //statistiques
+    /**
+     * @Route("/stats-niveaux", name="stats-niveaux")
+     */
+    public function statsniveaux(Request $request)
+    {
+
+        $em = $this->getDoctrine();
+        $repoNiv = $em->getRepository(Niveau::class);
+
+
+        $conn = $this->getDoctrine()->getManager()->getConnection();
+
+
+        $sqlListeNiv = '
+            SELECT niveau.libelle, COUNT(*) as NbTestParNiv FROM test, niveau WHERE test.id_niveau_id=niveau.id GROUP BY test.id_niveau_id
+            ';
+        $liste = $conn->prepare($sqlListeNiv);
+        $liste->execute(array());
+
+        return $this->render('niveau/stats-niveaux.html.twig', [
+            'niveaux' => $liste,
+        ]);
+    }
+               
                
 
 
