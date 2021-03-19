@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Utilisateur;
+use App\Entity\User;
 use App\Entity\Role;
 use App\Form\AjoutUtilisateurType;
 use App\Form\ImageProfileType;
@@ -24,13 +25,15 @@ class UtilisateurController extends AbstractController
     }
 
      /**
-    * @Route("/ajout_utilisateur", name="ajout_utilisateur")
+    * @Route("/ajout_utilisateur/{id}", name="ajout_utilisateur", requirements={"id"="\d+"})
     */
-    public function ajoutUtilisateur(Request $request)
+    public function ajoutUtilisateur(int $id, Request $request)
     {
         //$role = unRole();
         $utilisateur = new Utilisateur(); // Instanciation d’un objet Utilisateur
-        $form = $this->createForm(AjoutUtilisateurType::class,$utilisateur); 
+        $user = $this->getDoctrine()->getRepository(User::class)->find($id);
+        $utilisateur->setUser($user);
+        $form = $this->createForm(AjoutUtilisateurType::class,$utilisateur, ['user'=>$id]); 
         // Création du formulaire pour ajouter un utilisateur, en lui donnant l’instance.
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);

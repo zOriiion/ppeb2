@@ -37,8 +37,7 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @ORM\OneToOne(targetEntity=Utilisateur::class, cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\OneToOne(targetEntity=Utilisateur::class, inversedBy="user", cascade={"persist", "remove"})
      */
     private $utilisateur;
 
@@ -120,10 +119,11 @@ class User implements UserInterface
         return $this->utilisateur;
     }
 
-    public function setUtilisateur(Utilisateur $utilisateur): self
+    public function setUtilisateur(?Utilisateur $utilisateur): self
     {
         $this->utilisateur = $utilisateur;
 
         return $this;
     }
+
 }

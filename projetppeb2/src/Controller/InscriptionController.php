@@ -25,6 +25,7 @@ class InscriptionController extends AbstractController
             if ($form->isSubmitted() && $form->isValid()) {
                 $mdpConf = $form->get('confirmation')->getData();
                 $mdp = $user->getPassword();
+                $id = $user->getId();
                 if($mdp == $mdpConf){
                     $user->setRoles(array('ROLE_USER'));
                     $user->setPassword($passwordEncoder->encodePassword($user, $user->getPassword()));
@@ -32,7 +33,8 @@ class InscriptionController extends AbstractController
                     $em->persist($user);
                     $em->flush();
                     $this->addFlash('notice', 'Inscription réussie');
-                    return $this->redirectToRoute('app_login');
+                    //$this->redirectToRoute('ajout_utilisateur/'+$id);
+                    return $this->redirectToRoute('ajout_utilisateur', array('id'=>$user->getId()));
                 }
                 
                 else{

@@ -5,7 +5,7 @@ $(document).ready(function() {
     let codeTheme;
     let themes = document.getElementById("themes");
     var btExo = document.getElementById("btExo");
-    var btExoForm = document.getElementById("btExoForm");
+    var btExoForm = document.getElementsByClassName("btExoForm");
     var inputExo = document.getElementById("inputExo");
     var affichage = document.getElementById("affichage");
     var titre = document.getElementById("titre");

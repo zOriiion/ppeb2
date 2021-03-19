@@ -21,9 +21,9 @@ class InscriptionType extends AbstractType
             
             ->add('password',PasswordType::class)
             ->add('confirmation', PasswordType::class,['mapped'=>false])
-            ->add('utilisateur', EntityType::class,
+/*             ->add('utilisateur', EntityType::class,
             array( 'class' => 'App\Entity\Utilisateur',
-            'choice_label' => 'email'))
+            'choice_label' => 'email')) */
             ->add('inscrire',SubmitType::class)
         ;
     }
