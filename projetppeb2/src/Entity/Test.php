@@ -37,6 +37,11 @@ class Test
      */
     private $idNiveau;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $imageUrl;
+
     public function __construct()
     {
         $this->idListeMot = new ArrayCollection();
@@ -91,6 +96,18 @@ class Test
     public function setIdNiveau(?Niveau $idNiveau): self
     {
         $this->idNiveau = $idNiveau;
+
+        return $this;
+    }
+
+    public function getImageUrl(): ?string
+    {
+        return $this->imageUrl;
+    }
+
+    public function setImageUrl(?string $imageUrl): self
+    {
+        $this->imageUrl = $imageUrl;
 
         return $this;
     }

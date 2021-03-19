@@ -24,6 +24,11 @@ class Niveau
      */
     private $libelle;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $image_url;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -37,6 +42,18 @@ class Niveau
     public function setLibelle(string $libelle): self
     {
         $this->libelle = $libelle;
+
+        return $this;
+    }
+
+    public function getImageUrl(): ?string
+    {
+        return $this->image_url;
+    }
+
+    public function setImageUrl(?string $image_url): self
+    {
+        $this->image_url = $image_url;
 
         return $this;
     }
