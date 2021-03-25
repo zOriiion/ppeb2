@@ -46,7 +46,7 @@ class UtilisateurController extends AbstractController
                  $this->addFlash('notice', 'Utilisateur inséré'); 
                 // Nous préparons le message à afficher à l’utilisateur sur la page où il se rendra
                 }
-            return $this->redirectToRoute('ajout_utilisateur'); 
+            return $this->redirectToRoute('app_login'); 
             // Nous redirigeons l’utilisateur sur l’ajout d’un utilisateur après l’insertion.
             }
             return $this->render('utilisateur/ajout_utilisateur.html.twig', [
