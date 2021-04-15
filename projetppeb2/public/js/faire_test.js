@@ -26,7 +26,7 @@ $(document).ready(function() {
 
     function ajaxThemes(){
         var request= $.ajax({
-            url: "http://serveur1.arras-sio.com/symfony4-4064/ppeb2off/ppeb2/projetppeb2/public/api/themes", 
+            url: "http://serveur1.arras-sio.com/symfony4-4064/ppeb2off/ppeb2/projetppeb2/public/api/niveaux", 
             method:"GET",
             dataType: "json",
             beforeSend: function( xhr ) {

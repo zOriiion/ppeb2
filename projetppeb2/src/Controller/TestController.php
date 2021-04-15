@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Test;
+use App\Entity\Niveau;
 use App\Form\AjoutTestType;
 
 class TestController extends AbstractController

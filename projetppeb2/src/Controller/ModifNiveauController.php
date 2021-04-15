@@ -20,7 +20,7 @@ class ModifNiveauController extends AbstractController
         $repoNiveau = $em->getRepository(Niveau::class);
         $niveau = $repoNiveau->find($id);
         if($niveau==null){
-            $this->addFlash('notice', "Ce thème n'existe pas");
+            $this->addFlash('notice', "Ce niveau n'existe pas");
             return $this->redirectToRoute('liste_niveaux');
         }
         $form = $this->createForm(ModifNiveauType::class,$niveau);
@@ -30,7 +30,7 @@ class ModifNiveauController extends AbstractController
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($niveau);
                 $em->flush();
-                $this->addFlash('notice', 'Thème modifié');
+                $this->addFlash('notice', 'Niveau modifié');
             }
             return $this->redirectToRoute('liste_niveaux');
         }

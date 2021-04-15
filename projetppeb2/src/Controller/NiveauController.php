@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Niveau;
+use App\Entity\Test;
 use App\Form\AjoutNiveauType;
 
 class NiveauController extends AbstractController
@@ -22,7 +23,7 @@ class NiveauController extends AbstractController
         ]);
     }
 
-     /**
+    /**
     * @Route("/ajout_niveau", name="ajout_niveau")
     */
     public function ajoutNiveau(Request $request)
@@ -41,7 +42,7 @@ class NiveauController extends AbstractController
                 // Nous préparons le message à afficher à l’utilisateur sur la page où il se rendra
                 }
             return $this->redirectToRoute('ajout_niveau'); 
-            // Nous redirigeons l’utilisateur sur l’ajout d’un thème après l’insertion.
+            // Nous redirigeons l’utilisateur sur l’ajout d’un niveau après l’insertion.
             }
             return $this->render('niveau/ajout_niveau.html.twig', [
             'form'=>$form->createView() // Nous passons le formulaire à la vue
@@ -58,14 +59,18 @@ class NiveauController extends AbstractController
 
         if ($request->get('supp')!=null){
             $niveau = $repoNiveau->find($request->get('supp'));
-            if($niveau!=null){
-                $em->getManager()->remove($niveau);
-                $em->getManager()->flush();
+            $tests = $em->getRepository(Test::class)->findBy(array('idNiveau'=>$niveau));
+            if(count($tests)==0){ //S'il n'y a pas de test à ce niveau
+
+                if($niveau!=null){
+                    $em->getManager()->remove($niveau);
+                    $em->getManager()->flush();
+                }
+            }else{ //S'il y a des tests à ce niveau
+                $this->addFlash('notice','Il existe des tests de ce niveau là, supprimez les avant'); //Message d'erreur s'il y a des tests à ce niveau
             }
             return $this->redirectToRoute('liste_niveaux');
         }
-           
-
         $niveaux = $repoNiveau->findBy(array(),array('libelle'=>'ASC'));
         
         return $this->render('niveau/liste_niveaux.html.twig', [
